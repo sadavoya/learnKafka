@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  kafka-zookeeper:
+    container_name: kafka-zookeeper
+    build:
+      context: .
+      dockerfile: ./kafka-dockerfile
+    image: sadavoya/learn-kafka
+    ports:
+      - "2181:2181"
+    volumes:
+      - zookeeper-data:/tmp/zookeeper
+      - kafka-data:/tmp/kafka-logs
+    working_dir: /home
+    entrypoint: [ "/home/start_kafka.sh" ]
+volumes:
+  zookeeper-data:
+  kafka-data:
