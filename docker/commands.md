@@ -21,7 +21,9 @@
 
 You are now ready to Kafka with a personal cluster in the cloud
 
-### Linux
+## Set up Kafka in Zookeeper mode
+
+### Linux (WSL)
 * [Detailed Instructions](https://www.conduktor.io/kafka/how-to-install-apache-kafka-on-linux/)
 0. Create a docker image based on Alpine
 1. Install JDK v11
@@ -40,5 +42,10 @@ You are now ready to Kafka with a personal cluster in the cloud
 3. Extract the contents on Linux
 4. Setup the $PATH env vars for easy access to the Kafka binaries
 
+
+
+## Set up Kafka in KRaft mode
+### Linux (WSL)
+* [Detailed Instructions](https://www.conduktor.io/kafka/how-to-install-apache-kafka-on-linux-without-zookeeper-kraft-mode)
 
 
