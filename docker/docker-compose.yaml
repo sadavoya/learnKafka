@@ -9,10 +9,9 @@ services:
     ports:
       - "2181:2181"
     volumes:
-      - zookeeper-data:/tmp/zookeeper
-      - kafka-data:/tmp/kafka-logs
+      - /tmp/zookeeper
+      - /tmp/kafka-logs
     working_dir: /home
     entrypoint: [ "/home/start_kafka.sh" ]
-volumes:
-  zookeeper-data:
-  kafka-data:
+    stdin_open: true
+    tty: true
