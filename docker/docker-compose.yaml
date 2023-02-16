@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   kafka-zookeeper:
-    container_name: kafka-zookeeper
+    container_name: kafka-kraft
     build:
       context: .
       dockerfile: ./kraft.dockerfile
@@ -9,6 +9,7 @@ services:
     ports:
       - "2181:2181"
     volumes:
+      - /tmp/kraft-combined-logs
       - /tmp/zookeeper
       - /tmp/kafka-logs
     working_dir: /home

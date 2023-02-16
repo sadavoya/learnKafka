@@ -20,8 +20,10 @@ RUN rm $KAFKA_FILE_NAME
 # Add start script
 RUN export PATH="$PATH:~/$KAFKA_FOLDER/bin"
 RUN echo "#! /bin/sh" > /home/start_kafka.sh
+RUN echo "echo Starting Zookeeper & Kafka" >> /home/start_kafka.sh
 RUN echo "/home/$KAFKA_FOLDER/bin/zookeeper-server-start.sh -daemon /home/$KAFKA_FOLDER/config/zookeeper.properties" >> /home/start_kafka.sh
 RUN echo "/home/$KAFKA_FOLDER/bin/kafka-server-start.sh /home/$KAFKA_FOLDER/config/server.properties" >> /home/start_kafka.sh
+RUN echo "echo Zookeeper & Kafka Started" >> /home/start_kafka.sh
 RUN chmod +x /home/start_kafka.sh
 
 

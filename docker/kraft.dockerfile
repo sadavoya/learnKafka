@@ -20,8 +20,10 @@ RUN rm $KAFKA_FILE_NAME
 # Add start script
 RUN export PATH="$PATH:~/$KAFKA_FOLDER/bin"
 RUN echo "#! /bin/sh" > /home/start_kafka.sh
+RUN echo "echo Starting KRAFT" >> /home/start_kafka.sh
 RUN echo "/home/$KAFKA_FOLDER/bin/kafka-storage.sh random-uuid | xargs -I{uuid} /home/$KAFKA_FOLDER/bin/kafka-storage.sh format -t {uuid} -c /home/$KAFKA_FOLDER/config/kraft/server.properties" >> /home/start_kafka.sh
 RUN echo "/home/$KAFKA_FOLDER/bin/kafka-server-start.sh /home/$KAFKA_FOLDER/config/kraft/server.properties" >> /home/start_kafka.sh
+RUN echo "echo KRAFT Started" >> /home/start_kafka.sh
 RUN chmod +x /home/start_kafka.sh
 
 
