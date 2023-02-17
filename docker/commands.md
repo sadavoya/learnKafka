@@ -49,3 +49,8 @@ You are now ready to Kafka with a personal cluster in the cloud
 * [Detailed Instructions](https://www.conduktor.io/kafka/how-to-install-apache-kafka-on-linux-without-zookeeper-kraft-mode)
 
 
+# Running in docker
+* Get a bash prompt from within the container
+```
+docker exec -ti <container name> /bin/bash
+```
