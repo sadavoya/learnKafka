@@ -13,6 +13,5 @@ services:
       - /tmp/zookeeper
       - /tmp/kafka-logs
     working_dir: /home
-    entrypoint: [ "/home/start_kafka.sh" ]
     stdin_open: true
     tty: true
