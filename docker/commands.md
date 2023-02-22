@@ -50,7 +50,21 @@ You are now ready to Kafka with a personal cluster in the cloud
 
 
 # Running in docker
-* Get a bash prompt from within the container
+* Start our container and get a bash prompt from within the container:
 ```
-docker exec -ti <container name> /bin/bash
+docker-compose up -d; docker exec -ti kafka-kraft /bin/bash
 ```
+* Stop our container and remove the image:
+```
+docker-compose down; docker rmi sadavoya/learn-kafka
+```
+* Commands inside the docker container:
+
+    * If you cannot run `kafka-topics.sh` from the command line, you need to update the path:
+    1. First, get the correct path from the .profile:
+    `cat ~/.profile` then look for the line starting with `export PATH=`. It should look similar to this:
+        ```
+        export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/kafka_2.    13-3.4.0/bin"
+        ```
+    2. Copy that entire line, then paste at the command prompt and execute. 
+    3. Test by running `kafka-topics.sh` - you should see output, not an error that the file could not be found
