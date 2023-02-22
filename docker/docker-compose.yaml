@@ -9,9 +9,11 @@ services:
     ports:
       - "2181:2181"
     volumes:
+      - ./xfer:/home/xfer
       - /tmp/kraft-combined-logs
       - /tmp/zookeeper
       - /tmp/kafka-logs
+      # - ./root:/root
     working_dir: /home
     stdin_open: true
     tty: true

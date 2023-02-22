@@ -18,7 +18,8 @@ RUN tar xzf $KAFKA_FILE_NAME
 RUN rm $KAFKA_FILE_NAME
 
 # Add start script
-RUN export PATH="$PATH:~/$KAFKA_FOLDER/bin"
+ARG PATH=${PATH:+${PATH}:}/home/$KAFKA_FOLDER/bin
+RUN echo "export PATH=\"$PATH\"" > ~/.profile
 RUN echo "#! /bin/sh" > /home/start_kafka.sh
 RUN echo "echo Starting KRAFT" >> /home/start_kafka.sh
 RUN echo "/home/$KAFKA_FOLDER/bin/kafka-storage.sh random-uuid | xargs -I{uuid} /home/$KAFKA_FOLDER/bin/kafka-storage.sh format -t {uuid} -c /home/$KAFKA_FOLDER/config/kraft/server.properties" >> /home/start_kafka.sh
