@@ -68,3 +68,26 @@ docker-compose down; docker rmi sadavoya/learn-kafka
         ```
     2. Copy that entire line, then paste at the command prompt and execute. 
     3. Test by running `kafka-topics.sh` - you should see output, not an error that the file could not be found
+
+# Kafka commands
+* Ensure we have the playground.config file create and populated with data from conductor
+* The following commands all start with a prefix that you can paste in first.
+    * `{prefix}` for remote cluster (e.g. on Conductor):
+        ```
+        kafka-topics.sh --command-config /home/xfer/playground.config --bootstrap-server cluster.playground.cdkt.io:9092
+        ```
+    * `{prefix}` for local cluster (e.g. local machine or within a docker container):
+        ```
+        kafka-topics.sh --bootstrap-server localhost:9092
+        ```
+* Create a topic: `{prefix}` **`--create --topic my_first_topic`**
+    * Create a topic with 5 partitions: 
+        `{create a topic}` **`--partitions 5`**
+    * Create a topic with an RF (Replication Factor) of 2:
+        `{create a topic}`  **`--replication-factor 2`**
+        * `Conductor` note: all topics have a MINIMUM RF of **3**
+* Get details about a topic:
+    `{prefix} --topic <topic name>` **`--describe`**
+* List topics: `{prefix}` **`--list`**
+* Delete a topic: `{prefix} --topic <topic name>` **`--delete`**
+
