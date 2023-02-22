@@ -71,6 +71,7 @@ docker-compose down; docker rmi sadavoya/learn-kafka
 
 # Kafka commands
 * Ensure we have the playground.config file create and populated with data from conductor
+## Topic CRuD (Create, Read, and Delete - there is no Update)
 * The following commands all start with a prefix that you can paste in first.
     * `{prefix}` for remote cluster (e.g. on Conductor):
         ```
@@ -91,3 +92,24 @@ docker-compose down; docker rmi sadavoya/learn-kafka
 * List topics: `{prefix}` **`--list`**
 * Delete a topic: `{prefix} --topic <topic name>` **`--delete`**
 
+## Producer Commands
+* The following commands all start with a prefix that you can paste in first
+    * `{prefix}` (remote cluster): 
+        ```
+        kafka-console-producer.sh --producer.config /home/xfer/playground.config --bootstrap-server cluster.playground.cdkt.io:9092
+        ```
+    * `{prefix}` (local cluster): 
+        ```
+        kafka-console-producer.sh --bootstrap-server localhost:9092
+        ```
+* To start sending messages: `{prefix}` **`--topic <topic name>`**
+    * A prompt will be displayed. Each line entered will be added to the topic.
+    * If no such topic exists named `<topic name>` then either
+        * the attempt to send will fail with an error OR
+        * the attempt will cause the new topic to be created (depends on cluster settings)
+* Enhancement example - get acknowledgement from leader and all replicas:
+    `{prefix} --topic <topic name>` **`--producer-property acks=all`**
+
+* To start sending messages that include a key: `{prefix} --topic <topic name>` **`--property parse.key=true --property key.separator=<separator character>`** 
+    * A prompt will be displayed. Each line entered will be added to the topic. Each line will first be split into 2 values - the part before the `<separator character>`, and the part after. The first part will be the key for the message, while the second part will be the value.
+        * Any line without the `<separator character>` will throw
