@@ -130,13 +130,13 @@ docker-compose down; docker rmi sadavoya/learn-kafka
         ```
         kafka-console-consumer.sh --bootstrap-server localhost:9092
         ```
-* Consume a topic: `{prefix}` **`-- topic <topic name>`**
+* Consume a topic: `{prefix}` **`--topic <topic name>`**
     * Now use a producer to send messages to the topic
     * As messages are sent, they will be displayed by the consumer
-* Consume a topic from the beginning: `{prefix}-- topic <topic name>` **`--from-beginning`**
+* Consume a topic from the beginning: `{prefix} --topic <topic name>` **`--from-beginning`**
     * All messages ever sent to the topic will be displayed
 * Consume a topic from beginning and display key, value, timestamp, and partition:
-    `{prefix}-- topic <topic name>` **`--formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true`** `--property` **`print.key=true`** `--property` **`print.value=true`** `--property` **`print.partition=true`** `--from-beginning`
+    `{prefix} --topic <topic name>` **`--formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true`** `--property` **`print.key=true`** `--property` **`print.value=true`** `--property` **`print.partition=true`** `--from-beginning`
 
 ## Consumer Commands - groups
 * Assume our `{basic}` consumer command is:
