@@ -163,3 +163,8 @@ docker-compose down; docker rmi sadavoya/learn-kafka
     * Description includes two interesting properties:
         * Lag - indicates how many messages this consumer has missed (in its partition)
         * Consumer-ID shows the ID of the consumer so we can see which consumer is assigned to each partition
+### Reset Offsets
+* `{reset the offsets}` for a group: `{prefix} --group <group name> ` **`--reset-offsets --to-earliest`** `--topic <topic name>`
+    * Replace `--to-earliest` with other options (depending on the desired reset strategy)
+* Dry run (for testing): `{reset the offsets}` **`--dry-run`**
+* Execute (to actually perform the reset): `{reset the offsets}` **`--execute`**
