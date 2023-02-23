@@ -113,3 +113,21 @@ docker-compose down; docker rmi sadavoya/learn-kafka
 * To start sending messages that include a key: `{prefix} --topic <topic name>` **`--property parse.key=true --property key.separator=<separator character>`** 
     * A prompt will be displayed. Each line entered will be added to the topic. Each line will first be split into 2 values - the part before the `<separator character>`, and the part after. The first part will be the key for the message, while the second part will be the value.
         * Any line without the `<separator character>` will throw
+
+## Consumer Commands
+* The following commands all start with a prefix that you can paste in first
+    * `{prefix}` (remote cluster): 
+        ```
+        kafka-console-consumer.sh --consumer.config /home/xfer/playground.config --bootstrap-server cluster.playground.cdkt.io:9092
+        ```
+    * `{prefix}` (local cluster): 
+        ```
+        kafka-console-consumer.sh --bootstrap-server localhost:9092
+        ```
+* Consume a topic: `{prefix}` **`-- topic <topic name>`**
+    * Now use a producer to send messages to the topic
+    * As messages are sent, they will be displayed by the consumer
+* Consume a topic from the beginning: `{prefix}-- topic <topic name>` **`--from-beginning`**
+    * All messages ever sent to the topic will be displayed
+* Consume a topic from beginning and display key, value, timestamp, and partition:
+    `{prefix}-- topic <topic name>` **`--formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true`** `--property` **`print.key=true`** `--property` **`print.value=true`** `--property` **`print.partition=true`** `--from-beginning`
