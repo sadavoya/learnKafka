@@ -50,10 +50,16 @@ You are now ready to Kafka with a personal cluster in the cloud
 
 
 # Running in docker
-* Start our container and get a bash prompt from within the container:
+* Start our container: and get a bash prompt from within the container:
 ```
-docker-compose up -d; docker exec -ti kafka-kraft /bin/bash
+docker-compose up -d
 ```
+* For kafka we need multiple terminals (one to run a local server, one for each console producer, and one for each console consumer). 
+    * For each terminal needed, open a WSL prompt and then run:
+        ```
+        docker exec -ti kafka-kraft /bin/bash
+        ```
+
 * Stop our container and remove the image:
 ```
 docker-compose down; docker rmi sadavoya/learn-kafka
