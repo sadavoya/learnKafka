@@ -147,3 +147,19 @@ docker-compose down; docker rmi sadavoya/learn-kafka
     * as consumers are added or removed, they are rebalanced automatically to spread partitions as evenly as possible
     * when a consumer is added in a group, that consumer will catch up on any missed messages
 
+## Consumer Group Commands
+* Manipulate consumer groups
+    * `{prefix}` (remote cluster): 
+        ```
+        kafka-consumer-groups.sh --command-config /home/xfer/playground.config --bootstrap-server cluster.playground.cdkt.io:9092
+        ```
+    * `{prefix}` (local cluster): 
+        ```
+        kafka-consumer-groups.sh --bootstrap-server localhost:9092
+        ```
+* List consumer groups: `{prefix}` **`--list`**
+    * Consumers that were created **without a group** will show up briefly, but they are temporary groups that will be deleted automatically
+* Describe a group: `{prefix}` **`--describe --group <group name>`**
+    * Description includes two interesting properties:
+        * Lag - indicates how many messages this consumer has missed (in its partition)
+        * Consumer-ID shows the ID of the consumer so we can see which consumer is assigned to each partition
