@@ -131,3 +131,13 @@ docker-compose down; docker rmi sadavoya/learn-kafka
     * All messages ever sent to the topic will be displayed
 * Consume a topic from beginning and display key, value, timestamp, and partition:
     `{prefix}-- topic <topic name>` **`--formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true`** `--property` **`print.key=true`** `--property` **`print.value=true`** `--property` **`print.partition=true`** `--from-beginning`
+
+## Consumer Commands - groups
+* Assume our `{basic}` consumer command is:
+    `{prefix} --topic <topic name>`
+* Start a consumer in a group:
+    `{basic}` **`--group <application name>`**
+    * start as many consumers in the same group as you like
+    * as consumers are added or removed, they are rebalanced automatically to spread partitions as evenly as possible
+    * when a consumer is added in a group, that consumer will catch up on any missed messages
+
